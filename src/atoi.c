@@ -4,46 +4,41 @@
 #include <string.h>
 
 int
-main(int argc, char **argv)
+int_atoi(const char *input)
 {
-	
-	if (argc < 2) {
-		printf("Missing args\n");
-		return 1;
-	}
+	unsigned int n_chars;
+	unsigned int factor = 1;
+	int num = 0;
+	const char *read;
+	const char *last_digit;
+	bool is_negative = false;
 
-	const char *input = argv[1];
 	if (input == NULL) {
-		printf("Bad input\n");
-		return 1;
+		return 0;
 	}
 
-	unsigned int n_chars = strlen(input);
+	n_chars = strlen(input);
 	if (n_chars == 0) {
-		printf("Bad input\n");
-		return 1;
+		return 0;
 	}
 
-	const char *read = input;
+	read = input;
 
 	/* Trim whitespace from the front */
 	while(isblank(*read)) {
 		read++;
 	}
 
-	bool is_negative = false;
 	if (*read == '-') {
 		read++;
 		is_negative = true;
 	}
 
-	const char *last_digit = read;
+	last_digit = read;
 	while (isdigit(*last_digit)) {
 		last_digit++;
 	}
 	last_digit--;
-	int num = 0;
-	unsigned int factor = 1;
 
 	/* Find the end of the parsable string */
 	while (last_digit >= read) {
@@ -55,6 +50,22 @@ main(int argc, char **argv)
 	if (is_negative) {
 		num *= -1;
 	}
+
+	return num;
+
+}
+
+int
+main(int argc, char **argv)
+{
+	
+	if (argc < 2) {
+		printf("Missing args\n");
+		return 1;
+	}
+
+	const char *input = argv[1];
+	int num = int_atoi(input);
 
 	printf("atoi: %s => %d\n", input, num);
 

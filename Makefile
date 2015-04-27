@@ -13,4 +13,10 @@ binary_sort: directories
 strip_whitespace: directories
 	gcc -g -o build/strip_whitespace src/strip_whitespace.c
 
-all: itao binary_sort strip_whitespace
+fizzbuzz: directories
+	gcc -g -std=gnu99 -o build/fizzbuzz src/fizzbuzz.c
+
+binary_search: directories
+	gcc -g -o build/binary_search src/binary_search.c
+
+all: itao binary_sort strip_whitespace fizzbuzz
