@@ -22,4 +22,7 @@ binary_search: directories
 linked_list_reverse: directories
 	gcc -g -std=gnu99 -o build/linked_list_reverse src/linked_list_reverse.c
 
+sorting: directories
+	gcc -g -std=gnu99 -o build/sorting src/sorting.c
+
 all: itao binary_sort strip_whitespace fizzbuzz
