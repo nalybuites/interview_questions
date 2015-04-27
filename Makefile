@@ -19,4 +19,7 @@ fizzbuzz: directories
 binary_search: directories
 	gcc -g -o build/binary_search src/binary_search.c
 
+linked_list_reverse: directories
+	gcc -g -std=gnu99 -o build/linked_list_reverse src/linked_list_reverse.c
+
 all: itao binary_sort strip_whitespace fizzbuzz
