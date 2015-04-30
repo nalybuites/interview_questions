@@ -1,28 +1,44 @@
+CFLAGS = -g -std=gnu99 -lm
+CC = gcc $(CFLAGS)
+
 directories:
 	mkdir -p build
+	mkdir -p build/obj
+	mkdir -p build/bin
 
 atoi: directories
-	gcc -g -lm -o build/atoi src/atoi.c
+	$(CC) -o build/bin/atoi src/atoi.c
 
 itoa: directories
-	gcc -g -lm -o build/itoa src/itoa.c
+	$(CC) -o build/bin/itoa src/itoa.c
 
 binary_sort: directories
-	gcc -g -o build/binary_sort src/binary_sort.c
+	$(CC) -o build/bin/binary_sort src/binary_sort.c
 
 strip_whitespace: directories
-	gcc -g -o build/strip_whitespace src/strip_whitespace.c
+	$(CC) -o build/bin/strip_whitespace src/strip_whitespace.c
 
 fizzbuzz: directories
-	gcc -g -std=gnu99 -o build/fizzbuzz src/fizzbuzz.c
+	$(CC) -o build/bin/fizzbuzz src/fizzbuzz.c
 
 binary_search: directories
-	gcc -g -o build/binary_search src/binary_search.c
+	$(CC) -o build/bin/binary_search src/binary_search.c
 
 linked_list_reverse: directories
-	gcc -g -std=gnu99 -o build/linked_list_reverse src/linked_list_reverse.c
+	$(CC) -o build/linked_list_reverse src/linked_list_reverse.c
 
-sorting: directories
-	gcc -g -std=gnu99 -o build/sorting src/sorting.c
+sorting_algos: directories
+	$(CC) -c -o build/obj/sort_bubble.o src/sort_bubble.c
+	$(CC) -c -o build/obj/sort_heap.o src/sort_heap.c
+	$(CC) -c -o build/obj/sort_insertion.o src/sort_insertion.c
+	$(CC) -c -o build/obj/sort_merge.o src/sort_merge.c
+	$(CC) -c -o build/obj/sort_quick.o src/sort_quick.c
+	$(CC) -c -o build/obj/sort_selection.o src/sort_selection.c
 
-all: itao binary_sort strip_whitespace fizzbuzz
+sorting: directories sorting_algos
+	$(CC) -c -o build/obj/sorting.o src/sorting.c
+	$(CC) -o build/bin/sorting build/obj/sort_bubble.o build/obj/sort_heap.o build/obj/sort_insertion.o \
+		build/obj/sort_merge.o build/obj/sort_quick.o build/obj/sort_selection.o build/obj/sorting.o
+
+all: itao binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search
+
