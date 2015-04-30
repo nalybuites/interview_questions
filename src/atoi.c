@@ -1,7 +1,9 @@
-#include <math.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+
+#include "../include/atoi.h"
 
 int
 int_atoi(const char *input)
@@ -55,19 +57,3 @@ int_atoi(const char *input)
 
 }
 
-int
-main(int argc, char **argv)
-{
-	
-	if (argc < 2) {
-		printf("Missing args\n");
-		return 1;
-	}
-
-	const char *input = argv[1];
-	int num = int_atoi(input);
-
-	printf("atoi: %s => %d\n", input, num);
-
-	return 0;
-}

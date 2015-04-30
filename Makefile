@@ -5,12 +5,13 @@ directories:
 	mkdir -p build
 	mkdir -p build/obj
 	mkdir -p build/bin
+	mkdir -p build/check
 
 atoi: directories
-	$(CC) -o build/bin/atoi src/atoi.c
+	$(CC) -c -o build/obj/atoi.o src/atoi.c
 
 itoa: directories
-	$(CC) -o build/bin/itoa src/itoa.c
+	$(CC) -o build/bin/itoa.o src/itoa.c
 
 binary_sort: directories
 	$(CC) -o build/bin/binary_sort src/binary_sort.c
@@ -39,6 +40,8 @@ sorting: directories sorting_algos
 	$(CC) -c -o build/obj/sorting.o src/sorting.c
 	$(CC) -o build/bin/sorting build/obj/sort_bubble.o build/obj/sort_heap.o build/obj/sort_insertion.o \
 		build/obj/sort_merge.o build/obj/sort_quick.o build/obj/sort_selection.o build/obj/sorting.o
+check: all
+	gcc -g -lcheck -o build/check/check_atoi build/obj/atoi.o test/check_atoi.c
 
 all: itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search
 
