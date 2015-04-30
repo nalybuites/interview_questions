@@ -33,6 +33,10 @@ binary_sort(char *digits)
 			right--;
 		}
 
+		if (left >= right) {
+			break;
+		}
+
 		temp = *left;
 		*left = *right;
 		*right = temp;
@@ -42,21 +46,3 @@ binary_sort(char *digits)
 	}
 }
 
-int
-main (int argc, char **argv)
-{
-
-	if (argc != 2 || argv[1] == NULL) {
-		printf("Missing args\n");
-		return 1;
-	}
-
-	char *digits = strdup(argv[1]);
-	binary_sort(digits);
-
-	printf("binary_sort: %s => %s\n", argv[1], digits);
-
-	free(digits);
-
-	return 0;
-}
