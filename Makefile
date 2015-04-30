@@ -25,7 +25,7 @@ binary_search: directories
 	$(CC) -o build/bin/binary_search src/binary_search.c
 
 linked_list_reverse: directories
-	$(CC) -o build/linked_list_reverse src/linked_list_reverse.c
+	$(CC) -o build/bin/linked_list_reverse src/linked_list_reverse.c
 
 sorting_algos: directories
 	$(CC) -c -o build/obj/sort_bubble.o src/sort_bubble.c
@@ -40,5 +40,5 @@ sorting: directories sorting_algos
 	$(CC) -o build/bin/sorting build/obj/sort_bubble.o build/obj/sort_heap.o build/obj/sort_insertion.o \
 		build/obj/sort_merge.o build/obj/sort_quick.o build/obj/sort_selection.o build/obj/sorting.o
 
-all: itao binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search
+all: itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search
 

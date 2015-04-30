@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 static int
 binary_search_int(int haystack[], int needle, int low, int high)
