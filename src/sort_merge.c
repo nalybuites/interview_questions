@@ -1,5 +1,4 @@
-//#include <malloc.h>
-#include <stdlib.h>
+#include <malloc.h>
 #include <string.h>
 
 #include "../include/sort_merge.h"
