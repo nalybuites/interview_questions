@@ -7,28 +7,31 @@ directories:
 	mkdir -p build/bin
 	mkdir -p build/check
 
-atoi: directories
+clean :
+	rm -rf build
+
+atoi : directories
 	$(CC) -c -o build/obj/atoi.o src/atoi.c
 
-itoa: directories
+itoa : directories
 	$(CC) -o build/bin/itoa.o src/itoa.c
 
-binary_sort: directories
+binary_sort : directories
 	$(CC) -o build/bin/binary_sort src/binary_sort.c
 
-strip_whitespace: directories
+strip_whitespace : directories
 	$(CC) -o build/bin/strip_whitespace src/strip_whitespace.c
 
-fizzbuzz: directories
+fizzbuzz : directories
 	$(CC) -o build/bin/fizzbuzz src/fizzbuzz.c
 
-binary_search: directories
+binary_search : directories
 	$(CC) -o build/bin/binary_search src/binary_search.c
 
-linked_list_reverse: directories
+linked_list_reverse : directories
 	$(CC) -o build/bin/linked_list_reverse src/linked_list_reverse.c
 
-sorting_algos: directories
+sorting_algos : directories
 	$(CC) -c -o build/obj/sort_bubble.o src/sort_bubble.c
 	$(CC) -c -o build/obj/sort_heap.o src/sort_heap.c
 	$(CC) -c -o build/obj/sort_insertion.o src/sort_insertion.c
@@ -36,12 +39,12 @@ sorting_algos: directories
 	$(CC) -c -o build/obj/sort_quick.o src/sort_quick.c
 	$(CC) -c -o build/obj/sort_selection.o src/sort_selection.c
 
-sorting: directories sorting_algos
+sorting : directories sorting_algos
 	$(CC) -c -o build/obj/sorting.o src/sorting.c
 	$(CC) -o build/bin/sorting build/obj/sort_bubble.o build/obj/sort_heap.o build/obj/sort_insertion.o \
 		build/obj/sort_merge.o build/obj/sort_quick.o build/obj/sort_selection.o build/obj/sorting.o
 check: all
 	gcc -g -lcheck -o build/check/check_atoi build/obj/atoi.o test/check_atoi.c
 
-all: itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search
+all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search
 
