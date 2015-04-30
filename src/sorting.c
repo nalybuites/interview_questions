@@ -1,7 +1,8 @@
-#include <malloc.h>
+//#include <malloc.h>
 #include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h> // for osx
 #include <string.h>
 
 typedef int compar_t(const void *, const void *);
@@ -34,6 +35,9 @@ int_comparator(const void *a, const void *b)
 	return 1;
 }
 
+/* 
+ * QUICK SORT 
+ */
 static void
 print_array(int input[], unsigned int n_items)
 {
@@ -96,6 +100,9 @@ quick_sort(int input[], unsigned int n_items, compar_t *compar)
 	quick_sort_internal(input, 0, n_items - 1, compar);
 }
 
+/*
+ * MERGE SORT
+ */
 static void
 merge_sort_merge(int input[], int temp[], unsigned int begin_i, unsigned int middle_i, unsigned int end_i,
     compar_t *compar)
@@ -103,17 +110,22 @@ merge_sort_merge(int input[], int temp[], unsigned int begin_i, unsigned int mid
 	unsigned int temp_left = begin_i;
 	unsigned int temp_right = middle_i;
 
-	printf("\n");
-
 	for (unsigned int j = begin_i; j < end_i; j++) {
-		if (temp_left < temp_right ||
-		    (temp_right >= end_i || compar(&input[temp_left], &input[temp_right]) >= 0)) {
+		if (temp_left < middle_i && (temp_right >= end_i || input[temp_left] <= input[temp_right])) {
 			temp[j] = input[temp_left++];
 		} else {
 			temp[j] = input[temp_right++];
 		}
-		printf("placed %d at %u in [%u, %u, %u)\n", temp[j], j, begin_i, middle_i, end_i); 
 	}
+}
+
+void
+copy_array(int input[], int temp[], unsigned int begin_i, unsigned int end_i)
+{
+
+		for (unsigned int k = begin_i; k < end_i; k++) {
+			input[k] = temp[k];
+		}
 }
 
 static void
@@ -130,11 +142,7 @@ merge_sort_internal(int input[], int temp[], unsigned int begin_i, unsigned int 
 	merge_sort_internal(input, temp, middle_i, end_i, compar);
 	merge_sort_merge(input, temp, begin_i, middle_i, end_i, compar);
 
-	memcpy(input, temp, (end_i - begin_i) * sizeof(int));
-
-	printf("\n");
-	print_array(input + begin_i, (end_i - begin_i));
-	printf("\n");
+	memcpy(input + begin_i, temp + begin_i, (end_i - begin_i) * sizeof(int));
 }
 
 void
@@ -142,11 +150,14 @@ merge_sort(int input[], unsigned int n_items, compar_t *compar)
 {
 	int *temp = calloc(n_items, sizeof(int));
 
-	merge_sort_internal(input, temp, 0, n_items - 1, compar);
+	merge_sort_internal(input, temp, 0, n_items, compar);
 
 	free(temp);
 }
 
+/*
+ * BUBBLE SORT
+ */
 void
 bubble_sort(int input[], unsigned int n_items, compar_t *compar)
 {
@@ -166,6 +177,9 @@ bubble_sort(int input[], unsigned int n_items, compar_t *compar)
 	} while (n_swaps > 0);
 }
 
+/*
+ * INSERTION SORT
+ */
 void
 insertion_sort(int input[], unsigned int n_items, compar_t *compar)
 {
@@ -183,6 +197,9 @@ insertion_sort(int input[], unsigned int n_items, compar_t *compar)
 	}
 }
 
+/*
+ * SELECTION SORT
+ */
 void
 selection_sort(int input[], unsigned int n_items, compar_t *compar)
 {
@@ -206,6 +223,9 @@ selection_sort(int input[], unsigned int n_items, compar_t *compar)
 	}
 }
 
+/*
+ * HEAP SORT
+ */
 static void
 heap_sort_sift_down(int input[], unsigned int start_i, unsigned int end_i, compar_t *compar)
 {
@@ -294,7 +314,7 @@ main(int argc, char **argv)
 {
 
 	test_sort(quick_sort, "quicksort");
-//	test_sort(merge_sort, "mergesort");
+	test_sort(merge_sort, "mergesort");
 	test_sort(bubble_sort, "bubblesort");
 	test_sort(selection_sort, "selectionsort");
 	test_sort(insertion_sort, "insertionsort");
