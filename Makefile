@@ -29,7 +29,7 @@ binary_search : directories
 	$(CC) -c -o build/obj/binary_search.o src/binary_search.c
 
 linked_list_reverse : directories
-	$(CC) -o build/bin/linked_list_reverse src/linked_list_reverse.c
+	$(CC) -c -o build/obj/linked_list_reverse.o src/linked_list_reverse.c
 
 sorting_algos : directories
 	$(CC) -c -o build/obj/sort_bubble.o src/sort_bubble.c
@@ -49,6 +49,7 @@ check : all
 	gcc -g -std=gnu99 -lcheck -o build/check/check_fizzbuzz build/obj/fizzbuzz.o test/check_fizzbuzz.c
 	gcc -g -std=gnu99 -lcheck -o build/check/check_strip_whitespace build/obj/strip_whitespace.o test/check_strip_whitespace.c
 	gcc -g -std=gnu99 -lcheck -o build/check/check_binary_search build/obj/binary_search.o test/check_binary_search.c
+	gcc -g -std=gnu99 -lcheck -o build/check/check_linked_list_reverse build/obj/linked_list_reverse.o test/check_linked_list_reverse.c
 
 all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search atoi
 
