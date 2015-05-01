@@ -48,7 +48,7 @@ heap_sort_heapify(int input[], unsigned int n_items, compar_t *compar)
 void
 heap_sort(int input[], unsigned int n_items, compar_t *compar)
 {
-	unsigned int end_i = n_items - 1;
+	int end_i = n_items - 1;
 
 	heap_sort_heapify(input, n_items, compar);
 
