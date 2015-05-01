@@ -1,7 +1,9 @@
 #include <math.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "../include/itoa.h"
 /*
  * Traditional itoa() implementation
  */
@@ -12,17 +14,19 @@ int_itoa(int num, int base)
 	unsigned int n_chars;
 	char *output;
 	char *w;
+	bool is_negative = (num < 0);
 
 	/* Calculate output length */
+	num = abs(num);
 	n_chars = (int32_t)ceil(log((double)num) / log((double)base));
-	if (num < 0) {
+	if (is_negative) {
 		n_chars++;
 	}
 
 	/* Check the output base and allocate space for prefixes */
 	if (base < 2 || base > 16) {
 		return NULL;
-	} else if (base == 16) {
+	} else if (base == 2 || base == 16) {
 		n_chars += 2;
 	} else if (base == 8) {
 		n_chars++;
@@ -42,7 +46,10 @@ int_itoa(int num, int base)
 	}
 
 	/* Add base-specific prefixes */
-	if (base == 16) {
+	if (base == 2) {
+		*(w--) = 'b';
+		*(w--) = '0';
+	} else if (base == 16) {
 		*(w--) = 'x';
 		*(w--) = '0';
 	} else if (base == 8) {
@@ -50,32 +57,10 @@ int_itoa(int num, int base)
 	}
 
 	/* add the negative sign if necessary */
-	if (num < 0) {
+	if (is_negative) {
 		*w = '-';
 	}
 
 	return output;
 }
 
-int
-main(int argc, char **argv)
-{
-	if (argc < 3) {
-		printf("Missing args\n");
-		return 1;
-	}
-
-	int input_num = (argv[0] == NULL) ? 0 : strtol(argv[1], NULL, 10);
-	int output_base = (argv[1] == NULL) ? 10 : strtol(argv[2], NULL, 10);
-
-	if (output_base < 2 || output_base > 16) {
-		printf("Bad output base: %d\n", output_base);
-		return 1;
-	}
-	char *output = int_itoa(input_num, output_base);
-	printf("Number: %d => %s\n", input_num, output);
-
-	free(output);
-
-	return 0;
-}

@@ -14,7 +14,7 @@ atoi : directories
 	$(CC) -c -o build/obj/atoi.o src/atoi.c
 
 itoa : directories
-	$(CC) -o build/bin/itoa.o src/itoa.c
+	$(CC) -c -o build/obj/itoa.o src/itoa.c
 
 binary_sort : directories
 	$(CC) -c -o build/obj/binary_sort.o src/binary_sort.c
@@ -50,6 +50,7 @@ check : all
 	gcc -g -std=gnu99 -lcheck -o build/check/check_strip_whitespace build/obj/strip_whitespace.o test/check_strip_whitespace.c
 	gcc -g -std=gnu99 -lcheck -o build/check/check_binary_search build/obj/binary_search.o test/check_binary_search.c
 	gcc -g -std=gnu99 -lcheck -o build/check/check_linked_list_reverse build/obj/linked_list_reverse.o test/check_linked_list_reverse.c
+	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_itoa build/obj/itoa.o test/check_itoa.c
 
 all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search atoi
 
