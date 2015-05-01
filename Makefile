@@ -20,13 +20,13 @@ binary_sort : directories
 	$(CC) -c -o build/obj/binary_sort.o src/binary_sort.c
 
 strip_whitespace : directories
-	$(CC) -o build/bin/strip_whitespace src/strip_whitespace.c
+	$(CC) -c -o build/obj/strip_whitespace.o src/strip_whitespace.c
 
 fizzbuzz : directories
 	$(CC) -c -o build/obj/fizzbuzz.o src/fizzbuzz.c
 
 binary_search : directories
-	$(CC) -o build/bin/binary_search src/binary_search.c
+	$(CC) -c -o build/obj/binary_search.o src/binary_search.c
 
 linked_list_reverse : directories
 	$(CC) -o build/bin/linked_list_reverse src/linked_list_reverse.c
@@ -47,6 +47,8 @@ check : all
 	gcc -g -std=gnu99 -lcheck -o build/check/check_atoi build/obj/atoi.o test/check_atoi.c
 	gcc -g -std=gnu99 -lcheck -o build/check/check_binary_sort build/obj/binary_sort.o test/check_binary_sort.c
 	gcc -g -std=gnu99 -lcheck -o build/check/check_fizzbuzz build/obj/fizzbuzz.o test/check_fizzbuzz.c
+	gcc -g -std=gnu99 -lcheck -o build/check/check_strip_whitespace build/obj/strip_whitespace.o test/check_strip_whitespace.c
+	gcc -g -std=gnu99 -lcheck -o build/check/check_binary_search build/obj/binary_search.o test/check_binary_search.c
 
 all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search atoi
 
