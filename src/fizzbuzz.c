@@ -1,35 +1,24 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-void
-fizzbuzz(unsigned int limit)
+#include "../include/fizzbuzz.h"
+
+const char *
+fizzbuzz(unsigned int num)
 {
-	bool printed;
 
-	for (unsigned int i = 0; i < limit; i++) {
-		printed = false;
-
-		if (i % 3 == 0) {
-			printf("Fizz");
-			printed = true;
-		}
-
-		if (i % 5 == 0) {
-			printf("Buzz");
-			printed = true;
-		}
-
-		if (printed) {
-			printf("\n");
-		}
+	if (num % 3 == 0 && num % 5 == 0) {
+		return "FizzBuzz";
 	}
-}
 
-int
-main(int argc, char **argv)
-{
-	fizzbuzz(100);
+	if (num % 3 == 0) {
+		return "Fizz";
+	}
 
-	return 0;
+	if (num % 5 == 0) {
+		return "Buzz";
+	}
+
+	return NULL;
 }
 

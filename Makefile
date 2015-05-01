@@ -23,7 +23,7 @@ strip_whitespace : directories
 	$(CC) -o build/bin/strip_whitespace src/strip_whitespace.c
 
 fizzbuzz : directories
-	$(CC) -o build/bin/fizzbuzz src/fizzbuzz.c
+	$(CC) -c -o build/obj/fizzbuzz.o src/fizzbuzz.c
 
 binary_search : directories
 	$(CC) -o build/bin/binary_search src/binary_search.c
@@ -46,6 +46,7 @@ sorting : directories sorting_algos
 check : all
 	gcc -g -std=gnu99 -lcheck -o build/check/check_atoi build/obj/atoi.o test/check_atoi.c
 	gcc -g -std=gnu99 -lcheck -o build/check/check_binary_sort build/obj/binary_sort.o test/check_binary_sort.c
+	gcc -g -std=gnu99 -lcheck -o build/check/check_fizzbuzz build/obj/fizzbuzz.o test/check_fizzbuzz.c
 
 all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search atoi
 
