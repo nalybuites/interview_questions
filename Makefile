@@ -19,6 +19,9 @@ itoa : directories
 binary_sort : directories
 	$(CC) -c -o build/obj/binary_sort.o src/binary_sort.c
 
+int_set_intersect : directories
+	$(CC) -c -o build/obj/int_set_intersect.o src/int_set_intersect.c
+
 strip_whitespace : directories
 	$(CC) -c -o build/obj/strip_whitespace.o src/strip_whitespace.c
 
@@ -48,6 +51,7 @@ check : all
 	gcc -g -std=gnu99 -lcheck -o build/check/check_linked_list_reverse build/obj/linked_list_reverse.o test/check_linked_list_reverse.c
 	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_itoa build/obj/itoa.o test/check_itoa.c
 	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_sorting build/obj/sort_bubble.o build/obj/sort_heap.o build/obj/sort_insertion.o build/obj/sort_merge.o build/obj/sort_quick.o build/obj/sort_selection.o test/check_sorting.c
+	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_int_set_intersect build/obj/int_set_intersect.o test/check_int_set_intersect.c
 
-all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search atoi
+all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search atoi int_set_intersect
 
