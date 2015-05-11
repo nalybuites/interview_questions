@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "include/linked_list.h"
+#include "../include/linked_list.h"
+#include "../include/linked_list_reverse.h"
 	
 struct node *
 linked_list_reverse(struct node *head)

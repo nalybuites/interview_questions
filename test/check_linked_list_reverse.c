@@ -2,6 +2,7 @@
 
 #include <check.h>
 
+#include "../include/linked_list.h"
 #include "../include/linked_list_reverse.h"
 #include "../include/util.h"
 
