@@ -27,6 +27,8 @@ strip_whitespace : directories
 
 fizzbuzz : directories
 	$(CC) -c -o build/obj/fizzbuzz.o src/fizzbuzz.c
+fibonacci : directories
+	$(CC) -c -o build/obj/fibonacci.o src/fibonacci.c
 
 binary_search : directories
 	$(CC) -c -o build/obj/binary_search.o src/binary_search.c
@@ -60,6 +62,7 @@ check : all
 	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_int_set_intersect build/obj/int_set_intersect.o test/check_int_set_intersect.c
 	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_sum_array build/obj/sum_array.o test/check_sum_array.c
 	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_list_merge build/obj/list_merge.o test/check_list_merge.c
+	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_fibonacci build/obj/fibonacci.o test/check_fibonacci.c
 
-all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search atoi int_set_intersect sum_array list_merge
+all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search atoi int_set_intersect sum_array list_merge fibonacci
 
