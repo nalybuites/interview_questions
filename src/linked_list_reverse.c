@@ -1,11 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-struct node {
-	int value;
-	struct node *next;
-};
-
+#include "include/linked_list.h"
+	
 struct node *
 linked_list_reverse(struct node *head)
 {
