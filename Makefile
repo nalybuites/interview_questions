@@ -1,68 +1,74 @@
-CFLAGS = -g -std=gnu99 -lm
+CFLAGS = -g -std=gnu99 -lm -lcheck
 CC = gcc $(CFLAGS)
+BUILD_DIR = build
+OBJ_DIR = $(BUILD_DIR)/obj
+CHECK_DIR = $(BUILD_DIR)/check
+BIN_DIR = $(BUILD_DIR)/bin
+SRC_DIR = src
+TEST_DIR = test
 
 directories :
 	mkdir -p build
-	mkdir -p build/obj
+	mkdir -p $(OBJ_DIR)
 	mkdir -p build/bin
-	mkdir -p build/check
+	mkdir -p $(CHECK_DIR)
 
 clean :
 	rm -rf build
 
 atoi : directories
-	$(CC) -c -o build/obj/atoi.o src/atoi.c
+	$(CC) -c -o $(OBJ_DIR)/atoi.o $(SRC_DIR)/atoi.c
 
 itoa : directories
-	$(CC) -c -o build/obj/itoa.o src/itoa.c
+	$(CC) -c -o $(OBJ_DIR)/itoa.o $(SRC_DIR)/itoa.c
 
 binary_sort : directories
-	$(CC) -c -o build/obj/binary_sort.o src/binary_sort.c
+	$(CC) -c -o $(OBJ_DIR)/binary_sort.o $(SRC_DIR)/binary_sort.c
 
 int_set_intersect : directories
-	$(CC) -c -o build/obj/int_set_intersect.o src/int_set_intersect.c
+	$(CC) -c -o $(OBJ_DIR)/int_set_intersect.o $(SRC_DIR)/int_set_intersect.c
 
 strip_whitespace : directories
-	$(CC) -c -o build/obj/strip_whitespace.o src/strip_whitespace.c
+	$(CC) -c -o $(OBJ_DIR)/strip_whitespace.o $(SRC_DIR)/strip_whitespace.c
 
 fizzbuzz : directories
-	$(CC) -c -o build/obj/fizzbuzz.o src/fizzbuzz.c
+	$(CC) -c -o $(OBJ_DIR)/fizzbuzz.o $(SRC_DIR)/fizzbuzz.c
 fibonacci : directories
-	$(CC) -c -o build/obj/fibonacci.o src/fibonacci.c
+	$(CC) -c -o $(OBJ_DIR)/fibonacci.o $(SRC_DIR)/fibonacci.c
 
 binary_search : directories
-	$(CC) -c -o build/obj/binary_search.o src/binary_search.c
+	$(CC) -c -o $(OBJ_DIR)/binary_search.o $(SRC_DIR)/binary_search.c
 
 linked_list_reverse : directories
-	$(CC) -c -o build/obj/linked_list_reverse.o src/linked_list_reverse.c
+	$(CC) -c -o $(OBJ_DIR)/linked_list_reverse.o $(SRC_DIR)/linked_list_reverse.c
 
 sum_array : directories
-	$(CC) -c -o build/obj/sum_array.o src/sum_array.c
+	$(CC) -c -o $(OBJ_DIR)/sum_array.o $(SRC_DIR)/sum_array.c
 
 list_merge : directories
-	$(CC) -c -o build/obj/list_merge.o src/list_merge.c
+	$(CC) -c -o $(OBJ_DIR)/list_merge.o $(SRC_DIR)/list_merge.c
 
 sorting : directories
-	$(CC) -c -o build/obj/sort_bubble.o src/sort_bubble.c
-	$(CC) -c -o build/obj/sort_heap.o src/sort_heap.c
-	$(CC) -c -o build/obj/sort_insertion.o src/sort_insertion.c
-	$(CC) -c -o build/obj/sort_merge.o src/sort_merge.c
-	$(CC) -c -o build/obj/sort_quick.o src/sort_quick.c
-	$(CC) -c -o build/obj/sort_selection.o src/sort_selection.c
+	$(CC) -c -o $(OBJ_DIR)/sort_bubble.o $(SRC_DIR)/sort_bubble.c
+	$(CC) -c -o $(OBJ_DIR)/sort_heap.o $(SRC_DIR)/sort_heap.c
+	$(CC) -c -o $(OBJ_DIR)/sort_insertion.o $(SRC_DIR)/sort_insertion.c
+	$(CC) -c -o $(OBJ_DIR)/sort_merge.o $(SRC_DIR)/sort_merge.c
+	$(CC) -c -o $(OBJ_DIR)/sort_quick.o $(SRC_DIR)/sort_quick.c
+	$(CC) -c -o $(OBJ_DIR)/sort_selection.o $(SRC_DIR)/sort_selection.c
 
 check : all
-	gcc -g -std=gnu99 -lcheck -o build/check/check_atoi build/obj/atoi.o test/check_atoi.c
-	gcc -g -std=gnu99 -lcheck -o build/check/check_binary_sort build/obj/binary_sort.o test/check_binary_sort.c
-	gcc -g -std=gnu99 -lcheck -o build/check/check_fizzbuzz build/obj/fizzbuzz.o test/check_fizzbuzz.c
-	gcc -g -std=gnu99 -lcheck -o build/check/check_strip_whitespace build/obj/strip_whitespace.o test/check_strip_whitespace.c
-	gcc -g -std=gnu99 -lcheck -o build/check/check_binary_search build/obj/binary_search.o test/check_binary_search.c
-	gcc -g -std=gnu99 -lcheck -o build/check/check_linked_list_reverse build/obj/linked_list_reverse.o test/check_linked_list_reverse.c
-	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_itoa build/obj/itoa.o test/check_itoa.c
-	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_sorting build/obj/sort_bubble.o build/obj/sort_heap.o build/obj/sort_insertion.o build/obj/sort_merge.o build/obj/sort_quick.o build/obj/sort_selection.o test/check_sorting.c
-	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_int_set_intersect build/obj/int_set_intersect.o test/check_int_set_intersect.c
-	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_sum_array build/obj/sum_array.o test/check_sum_array.c
-	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_list_merge build/obj/list_merge.o test/check_list_merge.c
-	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_fibonacci build/obj/fibonacci.o test/check_fibonacci.c
+	$(CC) -o $(CHECK_DIR)/check_atoi $(OBJ_DIR)/atoi.o $(TEST_DIR)/check_atoi.c
+	$(CC) -o $(CHECK_DIR)/check_binary_sort $(OBJ_DIR)/binary_sort.o $(TEST_DIR)/check_binary_sort.c
+	$(CC) -o $(CHECK_DIR)/check_fizzbuzz $(OBJ_DIR)/fizzbuzz.o $(TEST_DIR)/check_fizzbuzz.c
+	$(CC) -o $(CHECK_DIR)/check_strip_whitespace $(OBJ_DIR)/strip_whitespace.o $(TEST_DIR)/check_strip_whitespace.c
+	$(CC) -o $(CHECK_DIR)/check_binary_search $(OBJ_DIR)/binary_search.o $(TEST_DIR)/check_binary_search.c
+	$(CC) -o $(CHECK_DIR)/check_linked_list_reverse $(OBJ_DIR)/linked_list_reverse.o $(TEST_DIR)/check_linked_list_reverse.c
+	$(CC) -o $(CHECK_DIR)/check_itoa $(OBJ_DIR)/itoa.o $(TEST_DIR)/check_itoa.c
+	$(CC) -o $(CHECK_DIR)/check_sorting $(OBJ_DIR)/sort_bubble.o $(OBJ_DIR)/sort_heap.o $(OBJ_DIR)/sort_insertion.o $(OBJ_DIR)/sort_merge.o $(OBJ_DIR)/sort_quick.o $(OBJ_DIR)/sort_selection.o $(TEST_DIR)/check_sorting.c
+	$(CC) -o $(CHECK_DIR)/check_int_set_intersect $(OBJ_DIR)/int_set_intersect.o $(TEST_DIR)/check_int_set_intersect.c
+	$(CC) -o $(CHECK_DIR)/check_sum_array $(OBJ_DIR)/sum_array.o $(TEST_DIR)/check_sum_array.c
+	$(CC) -o $(CHECK_DIR)/check_list_merge $(OBJ_DIR)/list_merge.o $(TEST_DIR)/check_list_merge.c
+	$(CC) -o $(CHECK_DIR)/check_fibonacci $(OBJ_DIR)/fibonacci.o $(TEST_DIR)/check_fibonacci.c
 
 all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search atoi int_set_intersect sum_array list_merge fibonacci
 
