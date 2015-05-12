@@ -42,6 +42,9 @@ sum_array : directories
 list_merge : directories
 	$(CC) -c -o build/obj/list_merge.o src/list_merge.c
 
+largest_int : directories
+	$(CC) -c -o build/obj/largest_int.o src/largest_int.c
+
 sorting : directories
 	$(CC) -c -o build/obj/sort_bubble.o src/sort_bubble.c
 	$(CC) -c -o build/obj/sort_heap.o src/sort_heap.c
@@ -63,6 +66,7 @@ check : all
 	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_sum_array build/obj/sum_array.o test/check_sum_array.c
 	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_list_merge build/obj/list_merge.o test/check_list_merge.c
 	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_fibonacci build/obj/fibonacci.o test/check_fibonacci.c
+	gcc -g -std=gnu99 -lcheck -lm -o build/check/check_largest_int build/obj/largest_int.o test/check_largest_int.c
 
-all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search atoi int_set_intersect sum_array list_merge fibonacci
+all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search atoi int_set_intersect sum_array list_merge fibonacci largest_int
 
