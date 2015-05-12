@@ -1,4 +1,5 @@
-#include "../include/sort_insertion.h"
+#include "../../include/sort/sort_insertion.h"
+#include "../../include/util.h"
 
 /*
  * INSERTION SORT

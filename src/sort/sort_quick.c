@@ -1,4 +1,5 @@
-#include "../include/sort_quick.h"
+#include "../../include/sort/sort_quick.h"
+#include "../../include/util.h"
 
 /* 
  * QUICK SORT 

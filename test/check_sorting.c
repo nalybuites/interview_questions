@@ -3,12 +3,12 @@
 
 #include <check.h>
 
-#include "../include/sort_bubble.h"
-#include "../include/sort_heap.h"
-#include "../include/sort_insertion.h"
-#include "../include/sort_merge.h"
-#include "../include/sort_quick.h"
-#include "../include/sort_selection.h"
+#include "../include/sort/sort_bubble.h"
+#include "../include/sort/sort_heap.h"
+#include "../include/sort/sort_insertion.h"
+#include "../include/sort/sort_merge.h"
+#include "../include/sort/sort_quick.h"
+#include "../include/sort/sort_selection.h"
 #include "../include/util.h"
 
 #define MAX_SORTING_TESTS 20

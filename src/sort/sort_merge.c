@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../include/sort_merge.h"
+#include "../../include/sort/sort_merge.h"
+#include "../../include/util.h"
 
 /*
  * MERGE SORT

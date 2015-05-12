@@ -1,7 +1,7 @@
 #ifndef _SORT_HEAP_H_
 #define _SORT_HEAP_H_
 
-#include "util.h"
+#include "../util.h"
 
 void heap_sort(int input[], unsigned int n_items, compar_t *compar);
 

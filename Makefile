@@ -49,12 +49,12 @@ list_merge : directories
 	$(CC) -c -o $(OBJ_DIR)/list_merge.o $(SRC_DIR)/list_merge.c
 
 sorting : directories
-	$(CC) -c -o $(OBJ_DIR)/sort_bubble.o $(SRC_DIR)/sort_bubble.c
-	$(CC) -c -o $(OBJ_DIR)/sort_heap.o $(SRC_DIR)/sort_heap.c
-	$(CC) -c -o $(OBJ_DIR)/sort_insertion.o $(SRC_DIR)/sort_insertion.c
-	$(CC) -c -o $(OBJ_DIR)/sort_merge.o $(SRC_DIR)/sort_merge.c
-	$(CC) -c -o $(OBJ_DIR)/sort_quick.o $(SRC_DIR)/sort_quick.c
-	$(CC) -c -o $(OBJ_DIR)/sort_selection.o $(SRC_DIR)/sort_selection.c
+	$(CC) -c -o $(OBJ_DIR)/sort_bubble.o $(SRC_DIR)/sort/sort_bubble.c
+	$(CC) -c -o $(OBJ_DIR)/sort_heap.o $(SRC_DIR)/sort/sort_heap.c
+	$(CC) -c -o $(OBJ_DIR)/sort_insertion.o $(SRC_DIR)/sort/sort_insertion.c
+	$(CC) -c -o $(OBJ_DIR)/sort_merge.o $(SRC_DIR)/sort/sort_merge.c
+	$(CC) -c -o $(OBJ_DIR)/sort_quick.o $(SRC_DIR)/sort/sort_quick.c
+	$(CC) -c -o $(OBJ_DIR)/sort_selection.o $(SRC_DIR)/sort/sort_selection.c
 
 check : all
 	$(CC) -o $(CHECK_DIR)/check_atoi \

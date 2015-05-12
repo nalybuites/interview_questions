@@ -1,4 +1,5 @@
-#include "../include/sort_bubble.h"
+#include "../../include/sort/sort_bubble.h"
+#include "../../include/util.h"
 
 /*
  * BUBBLE SORT

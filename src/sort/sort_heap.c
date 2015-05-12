@@ -1,6 +1,7 @@
 #include <math.h>
 
-#include "../include/sort_heap.h"
+#include "../../include/sort/sort_heap.h"
+#include "../../include/util.h"
 
 /*
  * HEAP SORT

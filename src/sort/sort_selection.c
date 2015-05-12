@@ -1,4 +1,5 @@
-#include "../include/sort_selection.h"
+#include "../../include/sort/sort_selection.h"
+#include "../../include/util.h"
 
 /*
  * SELECTION SORT
