@@ -8,13 +8,13 @@ SRC_DIR = src
 TEST_DIR = test
 
 directories :
-	mkdir -p build
+	mkdir -p $(BUILD_DIR)
 	mkdir -p $(OBJ_DIR)
-	mkdir -p build/bin
+	mkdir -p $(BIN_DIR)
 	mkdir -p $(CHECK_DIR)
 
 clean :
-	rm -rf build
+	rm -rf $(BUILD_DIR)
 
 atoi : directories
 	$(CC) -c -o $(OBJ_DIR)/atoi.o $(SRC_DIR)/atoi.c
@@ -57,18 +57,47 @@ sorting : directories
 	$(CC) -c -o $(OBJ_DIR)/sort_selection.o $(SRC_DIR)/sort_selection.c
 
 check : all
-	$(CC) -o $(CHECK_DIR)/check_atoi $(OBJ_DIR)/atoi.o $(TEST_DIR)/check_atoi.c
-	$(CC) -o $(CHECK_DIR)/check_binary_sort $(OBJ_DIR)/binary_sort.o $(TEST_DIR)/check_binary_sort.c
-	$(CC) -o $(CHECK_DIR)/check_fizzbuzz $(OBJ_DIR)/fizzbuzz.o $(TEST_DIR)/check_fizzbuzz.c
-	$(CC) -o $(CHECK_DIR)/check_strip_whitespace $(OBJ_DIR)/strip_whitespace.o $(TEST_DIR)/check_strip_whitespace.c
-	$(CC) -o $(CHECK_DIR)/check_binary_search $(OBJ_DIR)/binary_search.o $(TEST_DIR)/check_binary_search.c
-	$(CC) -o $(CHECK_DIR)/check_linked_list_reverse $(OBJ_DIR)/linked_list_reverse.o $(TEST_DIR)/check_linked_list_reverse.c
-	$(CC) -o $(CHECK_DIR)/check_itoa $(OBJ_DIR)/itoa.o $(TEST_DIR)/check_itoa.c
-	$(CC) -o $(CHECK_DIR)/check_sorting $(OBJ_DIR)/sort_bubble.o $(OBJ_DIR)/sort_heap.o $(OBJ_DIR)/sort_insertion.o $(OBJ_DIR)/sort_merge.o $(OBJ_DIR)/sort_quick.o $(OBJ_DIR)/sort_selection.o $(TEST_DIR)/check_sorting.c
-	$(CC) -o $(CHECK_DIR)/check_int_set_intersect $(OBJ_DIR)/int_set_intersect.o $(TEST_DIR)/check_int_set_intersect.c
-	$(CC) -o $(CHECK_DIR)/check_sum_array $(OBJ_DIR)/sum_array.o $(TEST_DIR)/check_sum_array.c
-	$(CC) -o $(CHECK_DIR)/check_list_merge $(OBJ_DIR)/list_merge.o $(TEST_DIR)/check_list_merge.c
-	$(CC) -o $(CHECK_DIR)/check_fibonacci $(OBJ_DIR)/fibonacci.o $(TEST_DIR)/check_fibonacci.c
+	$(CC) -o $(CHECK_DIR)/check_atoi \
+		$(OBJ_DIR)/atoi.o \
+		$(TEST_DIR)/check_atoi.c
+	$(CC) -o $(CHECK_DIR)/check_binary_sort \
+		$(OBJ_DIR)/binary_sort.o \
+		$(TEST_DIR)/check_binary_sort.c
+	$(CC) -o $(CHECK_DIR)/check_fizzbuzz \
+		$(OBJ_DIR)/fizzbuzz.o \
+		$(TEST_DIR)/check_fizzbuzz.c
+	$(CC) -o $(CHECK_DIR)/check_strip_whitespace \
+		$(OBJ_DIR)/strip_whitespace.o \
+		$(TEST_DIR)/check_strip_whitespace.c
+	$(CC) -o $(CHECK_DIR)/check_binary_search \
+		$(OBJ_DIR)/binary_search.o \
+		$(TEST_DIR)/check_binary_search.c
+	$(CC) -o $(CHECK_DIR)/check_linked_list_reverse \
+		$(OBJ_DIR)/linked_list_reverse.o \
+		$(TEST_DIR)/check_linked_list_reverse.c
+	$(CC) -o $(CHECK_DIR)/check_itoa \
+		$(OBJ_DIR)/itoa.o \
+		$(TEST_DIR)/check_itoa.c
+	$(CC) -o $(CHECK_DIR)/check_sorting \
+		$(OBJ_DIR)/sort_bubble.o \
+		$(OBJ_DIR)/sort_heap.o \
+		$(OBJ_DIR)/sort_insertion.o \
+		$(OBJ_DIR)/sort_merge.o \
+		$(OBJ_DIR)/sort_quick.o \
+		$(OBJ_DIR)/sort_selection.o \
+		$(TEST_DIR)/check_sorting.c
+	$(CC) -o $(CHECK_DIR)/check_int_set_intersect \
+		$(OBJ_DIR)/int_set_intersect.o \
+		$(TEST_DIR)/check_int_set_intersect.c
+	$(CC) -o $(CHECK_DIR)/check_sum_array \
+		$(OBJ_DIR)/sum_array.o \
+		$(TEST_DIR)/check_sum_array.c
+	$(CC) -o $(CHECK_DIR)/check_list_merge \
+		$(OBJ_DIR)/list_merge.o \
+		$(TEST_DIR)/check_list_merge.c
+	$(CC) -o $(CHECK_DIR)/check_fibonacci \
+		$(OBJ_DIR)/fibonacci.o \
+		$(TEST_DIR)/check_fibonacci.c
 
 all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search atoi int_set_intersect sum_array list_merge fibonacci
 
