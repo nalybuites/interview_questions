@@ -2,8 +2,7 @@
 
 #include <check.h>
 
-#include "../include/linked_list.h"
-#include "../include/linked_list_reverse.h"
+#include "../include/linked_list/linked_list.h"
 #include "../include/util.h"
 
 START_TEST(test_linked_list_reverse)
@@ -21,7 +20,7 @@ START_TEST(test_linked_list_reverse)
 		head = cursor;
 	}
 
-	head = linked_list_reverse(head);
+	linked_list_reverse(&head);
 
 	unsigned int val = 9;
 	cursor = head;

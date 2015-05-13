@@ -39,8 +39,8 @@ fibonacci : directories
 binary_search : directories
 	$(CC) -c -o $(OBJ_DIR)/binary_search.o $(SRC_DIR)/binary_search.c
 
-linked_list_reverse : directories
-	$(CC) -c -o $(OBJ_DIR)/linked_list_reverse.o $(SRC_DIR)/linked_list_reverse.c
+linked_list : directories
+	$(CC) -c -o $(OBJ_DIR)/linked_list.o $(SRC_DIR)/linked_list.c
 
 sum_array : directories
 	$(CC) -c -o $(OBJ_DIR)/sum_array.o $(SRC_DIR)/sum_array.c
@@ -72,9 +72,9 @@ check : all
 	$(CC) -o $(CHECK_DIR)/check_binary_search \
 		$(OBJ_DIR)/binary_search.o \
 		$(TEST_DIR)/check_binary_search.c
-	$(CC) -o $(CHECK_DIR)/check_linked_list_reverse \
-		$(OBJ_DIR)/linked_list_reverse.o \
-		$(TEST_DIR)/check_linked_list_reverse.c
+	$(CC) -o $(CHECK_DIR)/check_linked_list \
+		$(OBJ_DIR)/linked_list.o \
+		$(TEST_DIR)/check_linked_list.c
 	$(CC) -o $(CHECK_DIR)/check_itoa \
 		$(OBJ_DIR)/itoa.o \
 		$(TEST_DIR)/check_itoa.c
@@ -99,5 +99,5 @@ check : all
 		$(OBJ_DIR)/fibonacci.o \
 		$(TEST_DIR)/check_fibonacci.c
 
-all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list_reverse binary_search atoi int_set_intersect sum_array list_merge fibonacci
+all : itoa binary_sort strip_whitespace fizzbuzz sorting linked_list binary_search atoi int_set_intersect sum_array list_merge fibonacci
 
