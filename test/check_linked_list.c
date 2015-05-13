@@ -2,7 +2,7 @@
 
 #include <check.h>
 
-#include "../include/linked_list/linked_list.h"
+#include "../include/linked_list.h"
 #include "../include/util.h"
 
 START_TEST(test_linked_list_reverse)
